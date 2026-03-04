@@ -46,7 +46,7 @@ class ClientCarController extends Controller
 
         return response()->json([
             "success" => true,
-            "message" => "Cliente encontrado con éxito.",
+            "message" => "Vehículo encontrado con éxito.",
             "data" => new CarResource($car)
         ], 200);
     }
