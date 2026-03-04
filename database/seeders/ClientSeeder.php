@@ -13,8 +13,8 @@ class ClientSeeder extends Seeder
      */
     public function run(): void
     {
-        Client::factory()->count(5)
-            ->has(Car::factory()->count(10), 'cars')
+        Client::factory()->count(100)
+            ->has(Car::factory()->count(2), 'cars')
             ->create();
     }
 }

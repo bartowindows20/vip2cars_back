@@ -16,9 +16,7 @@ class Car extends Model
         'car_model_id',
         'plate',
         'year_manufacture',
-    ];
-
-    protected $hidden = [
+        'updated_at',
         'deleted_at'
     ];
 

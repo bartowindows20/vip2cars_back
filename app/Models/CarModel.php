@@ -14,10 +14,8 @@ class CarModel extends Model
 
     protected $fillable = [
         'name',
-        'brand_id'
-    ];
-
-    protected $hidden = [
+        'brand_id',
+        'updated_at',
         'deleted_at'
     ];
 

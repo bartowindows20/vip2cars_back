@@ -20,9 +20,7 @@ class Client extends Model
         'document_number',
         'email',
         'phone',
-    ];
-
-    protected $hidden = [
+        'updated_at',
         'deleted_at'
     ];
 

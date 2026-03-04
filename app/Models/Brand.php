@@ -14,9 +14,7 @@ class Brand extends Model
 
     protected $fillable = [
         'name',
-    ];
-
-    protected $hidden = [
+        'updated_at',
         'deleted_at'
     ];
 

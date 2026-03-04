@@ -14,7 +14,7 @@ class BrandSeeder extends Seeder
     {
         $now = now();
 
-        DB::table('brands')->insert(
+        DB::table('brands')->upsert(
             [
                 ['name' => 'Toyota',    'created_at' => $now, 'updated_at' => $now],
                 ['name' => 'Honda',     'created_at' => $now, 'updated_at' => $now],
@@ -24,7 +24,9 @@ class BrandSeeder extends Seeder
                 ['name' => 'Kia',       'created_at' => $now, 'updated_at' => $now],
                 ['name' => 'Nissan',    'created_at' => $now, 'updated_at' => $now],
                 ['name' => 'Mazda',     'created_at' => $now, 'updated_at' => $now],
-            ]
+            ],
+            ['name'],
+            ['updated_at']
         );
     }
 }
