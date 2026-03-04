@@ -30,8 +30,8 @@ class StoreClientRequest extends FormRequest
             'maternal_surname'  => ['required', 'string', 'max:255'],
             'document_type'     => ['required', Rule::in(DocumentTypeEnum::values())],
             'document_number'   => ['required', 'string', 'max:30'],
-            'email'             => ['required', 'email'],
-            'phone'             => ['required', 'string', 'max:30'],
+            'email'             => ['nullable', 'email'],
+            'phone'             => ['nullable', 'string', 'max:30'],
         ];
     }
 

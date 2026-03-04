@@ -23,9 +23,9 @@ class ClientResource extends JsonResource
             'document_number'   => $this->document_number,
             'email'             => $this->email,
             'phone'             => $this->phone,
+            'created_at'        => $this->created_at->format('Y-m-d H:i:s'),
+            'updated_at'        => $this->updated_at->format('Y-m-d H:i:s'),
             'cars'              => CarResource::collection($this->whenLoaded('cars')),
-            'created_at'        => $this->created_at,
-            'updated_at'        => $this->updated_at,
         ];
     }
 }

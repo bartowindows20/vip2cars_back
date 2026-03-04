@@ -29,12 +29,18 @@ class ClientService
 
             $client = Client::where('id', $client->id)->lockForUpdate()->first();
 
-            $data['updated_at'] = now();
-
             $client->update($data);
             $client->refresh();
 
             return $client;
+        });
+    }
+
+    public function delete(Client $client): void
+    {
+        DB::transaction(function () use ($client) {
+            $client->cars()->delete();
+            $client->delete();
         });
     }
 }

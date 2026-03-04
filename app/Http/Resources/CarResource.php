@@ -17,8 +17,9 @@ class CarResource extends JsonResource
         return [
             'id'                => $this->id,
             'plate'             => $this->plate,
-            'created_at'        => $this->created_at,
-            'updated_at'        => $this->updated_at,
+            'year_manufacture'  => $this->year_manufacture,
+            'created_at'        => $this->created_at->format('Y-m-d H:i:s'),
+            'updated_at'        => $this->updated_at->format('Y-m-d H:i:s'),
             'car_model'         => new CarModelResource($this->whenLoaded('carModel')),
             'client'            => new ClientResource($this->whenLoaded('client')),
         ];

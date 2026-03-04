@@ -9,7 +9,6 @@ use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use App\Services\ClientService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ClientController extends Controller
 {
@@ -20,16 +19,24 @@ class ClientController extends Controller
         //
     }
 
-    public function index(IndexClientRequest $request): AnonymousResourceCollection
+    public function index(IndexClientRequest $request): JsonResponse
     {
-        $perPage = $request->validated()['per_page'] ?? 50;
+        $perPage = $request->validated()['per_page'];
 
         $paginator = Client::with('cars.carModel.brand')
             ->orderByDesc('id')
             ->paginate($perPage)
             ->withQueryString();
 
-        return ClientResource::collection($paginator);
+        $resource = ClientResource::collection($paginator)->response()->getData(true);
+
+        return response()->json([
+            "success" => true,
+            "message" => "Listado de clientes obtenido con éxito.",
+            "data"    => $resource['data'],
+            "links"   => $resource['links'],
+            "meta"    => $resource['meta'],
+        ], 200);
     }
 
     public function show(Client $client): JsonResponse
@@ -63,7 +70,7 @@ class ClientController extends Controller
             "success" => true,
             "message" => $message,
             "data" => new ClientResource($client)
-        ], 200);
+        ], 201);
     }
 
     public function update(UpdateClientRequest $request, Client $client): JsonResponse
@@ -81,12 +88,11 @@ class ClientController extends Controller
 
     public function destroy(Client $client): JsonResponse
     {
-        $client->cars()->delete();
-        $client->delete();
+        $this->clientService->delete($client);
 
         return response()->json([
             "success" => true,
-            "message" => "Cliente eliminado con éxito.",
+            "message" => "Cliente y sus vehículos asociados eliminados con éxito.",
         ], 200);
     }
 }

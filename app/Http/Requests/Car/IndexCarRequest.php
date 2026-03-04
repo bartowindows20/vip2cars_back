@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Client;
+namespace App\Http\Requests\Car;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class IndexClientRequest extends FormRequest
+class IndexCarRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
