@@ -1,0 +1,266 @@
+{
+  "info": {
+    "_postman_id": "333d726e-9cb1-485c-a887-f6ac6541daac",
+    "name": "VIP2CARS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "25361416"
+  },
+  "item": [
+    {
+      "name": "Client",
+      "item": [
+        {
+          "name": "Listar clientes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url_base}}clients?per_page=1000",
+              "host": [
+                "{{url_base}}clients"
+              ],
+              "query": [
+                {
+                  "key": "per_page",
+                  "value": "1000"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear cliente",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"names\": \"Renzo Jesús\",\r\n    \"paternal_surname\": \"Condori\",\r\n    \"maternal_surname\": \"Hidalgo\",\r\n    \"document_type\": \"DNI\",\r\n    \"document_number\": \"71537459\",\r\n    \"email\": \"jesushc.04.27@gmail.com\",\r\n    \"phone\": \"922671538\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_base}}clients",
+              "host": [
+                "{{url_base}}clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar cliente",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"names\": \"Renzo\",\r\n    \"paternal_surname\": \"Condori\",\r\n    \"maternal_surname\": \"Hidalgo\",\r\n    \"document_type\": \"DNI\",\r\n    \"document_number\": \"71537459\",\r\n    \"email\": \"alberja@gmail.com\",\r\n    \"phone\": \"922671538\",\r\n    \"updated_at\": \"2026-03-04 06:50:54\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_base}}clients/1",
+              "host": [
+                "{{url_base}}clients"
+              ],
+              "path": [
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar cliente",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{url_base}}clients/1",
+              "host": [
+                "{{url_base}}clients"
+              ],
+              "path": [
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener cliente por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url_base}}clients/1",
+              "host": [
+                "{{url_base}}clients"
+              ],
+              "path": [
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener tipos de documentos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url_base}}document-types",
+              "host": [
+                "{{url_base}}document-types"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Car",
+      "item": [
+        {
+          "name": "Obtener vehículos de un cliente",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url_base}}client/1/cars?per_page=20",
+              "host": [
+                "{{url_base}}client"
+              ],
+              "path": [
+                "1",
+                "cars"
+              ],
+              "query": [
+                {
+                  "key": "per_page",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener vehículo por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url_base}}cars/2",
+              "host": [
+                "{{url_base}}cars"
+              ],
+              "path": [
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear vehículo",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"car_model_id\" : 1,\r\n    \"plate\" : \"ZSH-421\",\r\n    \"year_manufacture\": \"2025\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_base}}clients/1/cars",
+              "host": [
+                "{{url_base}}clients"
+              ],
+              "path": [
+                "1",
+                "cars"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar vehículo",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"car_model_id\" : 2,\r\n    \"plate\" : \"ZSH-425\",\r\n    \"year_manufacture\": \"2026\",\r\n    \"updated_at\":\"2026-03-04 12:18:07\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_base}}cars/201",
+              "host": [
+                "{{url_base}}cars"
+              ],
+              "path": [
+                "201"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar vehículo",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"car_model_id\" : 2,\r\n    \"plate\" : \"ZSH-425\",\r\n    \"year_manufacture\": \"2026\",\r\n    \"updated_at\":\"2026-03-04 12:18:07\"\r\n}"
+            },
+            "url": {
+              "raw": "{{url_base}}cars/2",
+              "host": [
+                "{{url_base}}cars"
+              ],
+              "path": [
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar marcas de autos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url_base}}brands",
+              "host": [
+                "{{url_base}}brands"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

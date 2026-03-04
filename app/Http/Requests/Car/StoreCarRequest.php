@@ -38,7 +38,7 @@ class StoreCarRequest extends FormRequest
             'required'      => 'El campo :attribute es requerido.',
             'unique'        => 'El valor del campo :attribute ya esta en uso.',
             'exists'        => 'El campo :attribute no existe.',
-            'date_format'   => 'El valor del campo :atrribute no esta en el formato correcto'
+            'date_format'   => 'El valor del campo :attribute no esta en el formato correcto'
         ];
     }
 

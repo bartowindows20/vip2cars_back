@@ -90,7 +90,7 @@ class UpdateClientRequest extends FormRequest
 
             if ($this->filled('updated_at')) {
 
-                if ($this->route('car')->updated_at->format('Y-m-d H:i:s') !== $this->input('updated_at')) {
+                if ($this->route('client')->updated_at->format('Y-m-d H:i:s') !== $this->input('updated_at')) {
                     $validator->errors()->add(
                         'updated_at',
                         "No tienes los ultimos cambios de este registro, por favor actualiza."
