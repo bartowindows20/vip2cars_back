@@ -1,3 +1,31 @@
+## Base de Datos
+
+Para el sistema de encuestas se diseñó una base de datos relacional que permite:
+
+- Crear encuestas
+- Asociar múltiples preguntas a cada encuesta
+- Definir opciones para preguntas de tipo selección
+- Registrar respuestas de forma anónima
+- Guardar las respuestas enviadas por los usuarios
+
+Las preguntas se desacoplan de las encuestas mediante la tabla **`survey_questions`**, lo que permite reutilizar preguntas en distintas encuestas y definir su orden o sección dentro de cada una.
+
+Las respuestas enviadas se registran en la tabla **`responses`**, mientras que cada respuesta individual a una pregunta se guarda en **`answers`**.
+
+Para mantener el anonimato, no se almacenan datos personales del usuario. Únicamente se guardan **hashes de la IP y del user agent**, lo que permite tener un control técnico básico sin identificar directamente al usuario.
+
+---
+
+## Crear la base de datos
+
+Para crear la base de datos y las tablas, ejecutar el script SQL incluido en el proyecto:
+
+```bash
+mysql -u root -p < docs/encuestas_anonimas_schema.sql
+```
+
+---
+
 # VIP2Cars Backend API
 
 API REST desarrollada para la gestión de **clientes y

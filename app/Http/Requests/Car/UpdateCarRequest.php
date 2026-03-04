@@ -26,7 +26,8 @@ class UpdateCarRequest extends FormRequest
             'car_model_id'      => ['required', 'exists:car_models,id'],
             'plate'             => [
                 'required',
-                Rule::unique('cars')->whereNull('deleted_at')->ignore($this->route('car')->id)
+                Rule::unique('cars')->whereNull('deleted_at')->ignore($this->route('car')->id),
+                'max:15'
             ],
             'year_manufacture'  => ['required', 'date_format:Y'],
             'updated_at'        => ['required', 'date']
@@ -40,7 +41,8 @@ class UpdateCarRequest extends FormRequest
             'unique'        => 'El valor del campo :attribute ya esta en uso.',
             'exists'        => 'El campo :attribute no existe.',
             'date_format'   => 'El valor del campo :attribute no esta en el formato correcto',
-            'date'          => 'El campo :attribute debe ser una fecha válida.'
+            'date'          => 'El campo :attribute debe ser una fecha válida.',
+            'max'           => 'El campo :attribute no debe ser mayor que :max.'
         ];
     }
 
