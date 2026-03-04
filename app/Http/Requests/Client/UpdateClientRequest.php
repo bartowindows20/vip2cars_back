@@ -30,8 +30,8 @@ class UpdateClientRequest extends FormRequest
             'maternal_surname'  => ['required', 'string', 'max:255'],
             'document_type'     => ['required', Rule::in(DocumentTypeEnum::values())],
             'document_number'   => ['required', 'string', 'max:30'],
-            'email'             => ['required', 'email'],
-            'phone'             => ['required', 'string', 'max:30'],
+            'email'             => ['nullable', 'email'],
+            'phone'             => ['nullable', 'string', 'max:30'],
             'updated_at'        => ['required', 'date']
         ];
     }
@@ -44,7 +44,7 @@ class UpdateClientRequest extends FormRequest
             'max'               => 'El campo :attribute no debe ser mayor que :max.',
             'in'                => 'El campo :attribute no es válido.',
             'email'             => 'El campo :attribute debe ser un email válido.',
-            'date'          => 'El campo :attribute debe ser una fecha válida.'
+            'date'              => 'El campo :attribute debe ser una fecha válida.'
         ];
     }
 
@@ -90,7 +90,7 @@ class UpdateClientRequest extends FormRequest
 
             if ($this->filled('updated_at')) {
 
-                if ($this->route('client')->updated_at != $this->input('updated_at')) {
+                if ($this->route('car')->updated_at->format('Y-m-d H:i:s') !== $this->input('updated_at')) {
                     $validator->errors()->add(
                         'updated_at',
                         "No tienes los ultimos cambios de este registro, por favor actualiza."

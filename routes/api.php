@@ -1,15 +1,13 @@
 <?php
 
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ClientCarController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\UtilityController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource('clients', ClientController::class);
+Route::apiResource('clients.cars', ClientCarController::class)->scoped(['car' => 'id'])->shallow();
 
-Route::get('document-types', function () {
-    $types = \App\Enums\DocumentTypeEnum::values();
-    return response()->json([
-        "success" => true,
-        "message" => "Tipos de documento encontrados con éxito.",
-        "data" => $types
-    ], 200);
-});
+Route::get('document-types', [UtilityController::class, 'getDocumentTypes']);
+Route::get('brands', [BrandController::class, 'index']);
