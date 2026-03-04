@@ -71,6 +71,14 @@ class UpdateClientRequest extends FormRequest
 
                 $enum = DocumentTypeEnum::tryFrom($type);
 
+                if (!$enum) {
+                    $validator->errors()->add(
+                        'document_type',
+                        "El tipo de documento no es válido."
+                    );
+                    return;
+                }
+
                 if (!preg_match($enum->regex(), $number)) {
                     $validator->errors()->add(
                         'document_number',
